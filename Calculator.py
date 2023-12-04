@@ -49,7 +49,7 @@ buttons = [
 ]
 
 for button_text, row, column, command in buttons:
-    button = tk.Button(root, text=button_text, padx=25, pady=25, command=lambda text=button_text, cmd=command: cmd() if cmd else button_click(text))
+    button = tk.Button(root, text=button_text, padx=24, pady=25, command=lambda text=button_text, cmd=command: cmd() if cmd else button_click(text))
     button.grid(row=row, column=column)
 
 clear_button = tk.Button(root, text="Clear", padx=20, pady=10, command=button_clear)
