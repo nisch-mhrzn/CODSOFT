@@ -28,7 +28,7 @@ root.title("Calculator")
 
 entry = tk.Entry(root, width=50, cursor='heart')
 entry.grid(row=0, column=0, columnspan=5)
-
+#UI interface
 buttons = [
     ("7", 1, 0),
     ("8", 1, 1),
