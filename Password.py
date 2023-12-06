@@ -1,7 +1,7 @@
 import tkinter as tk
 import random
 import string
-import os
+
 def generate_password():
     password_length = int(length_entry.get())
     password_characters = string.ascii_letters + string.digits + string.punctuation
