@@ -8,6 +8,9 @@ def button_click(number):
 def button_clear():
     entry.delete(0, tk.END)
 
+def button_delete():
+    entry.delete(len(entry.get()) - 1)
+
 def button_equal():
     try:
         expression = entry.get()
@@ -18,17 +21,12 @@ def button_equal():
         entry.delete(0, tk.END)
         entry.insert(tk.END, "Error")
 
-def power_function():#square a number 
-    current = entry.get()
-    entry.delete(0, tk.END)
-    entry.insert(tk.END, current + "**")
-
 root = tk.Tk()
 root.title("Calculator")
 
-entry = tk.Entry(root, width=50, cursor='heart')
-entry.grid(row=0, column=0, columnspan=5)
-#UI interface
+entry = tk.Entry(root, width=50, cursor='heart', font=('Arial', 20))
+entry.grid(row=0, column=0, columnspan=5, padx=10, pady=10)
+
 buttons = [
     ("7", 1, 0),
     ("8", 1, 1),
@@ -44,18 +42,22 @@ buttons = [
     ("-", 3, 3),
     ("0", 4, 0),
     (".", 4, 1),
-    ("^", 4, 2, power_function),
+    ("()", 4, 2),
+    (".", 4, 3),
     ("+", 4, 3)
 ]
 
-for button_text, row, column, command in buttons:
-    button = tk.Button(root, text=button_text, padx=24, pady=25, command=lambda text=button_text, cmd=command: cmd() if cmd else button_click(text))
-    button.grid(row=row, column=column)
+for button_text, row, column in buttons:
+    button = tk.Button(root, text=button_text, padx=20, pady=10, font=('Arial', 14), command=lambda text=button_text: button_click(text))
+    button.grid(row=row, column=column, padx=5, pady=5)
 
-clear_button = tk.Button(root, text="Clear", padx=20, pady=10, command=button_clear)
-clear_button.grid(row=5, column=0, columnspan=2)
+clear_button = tk.Button(root, text="Clear", padx=20, pady=10, font=('Arial', 14), command=button_clear)
+clear_button.grid(row=5, column=0, columnspan=2, padx=5, pady=5)
 
-equal_button = tk.Button(root, text="=", padx=20, pady=10, command=button_equal)
-equal_button.grid(row=5, column=2, columnspan=2)
+delete_button = tk.Button(root, text="Delete", padx=20, pady=10, font=('Arial', 14), command=button_delete)
+delete_button.grid(row=5, column=2, padx=5, pady=5)
+
+equal_button = tk.Button(root, text="=", padx=20, pady=10, font=('Arial', 14), command=button_equal)
+equal_button.grid(row=5, column=3, columnspan=2, padx=5, pady=5)
 
 root.mainloop()
