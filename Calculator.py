@@ -18,7 +18,7 @@ def button_equal():
         entry.delete(0, tk.END)
         entry.insert(tk.END, "Error")
 
-def power_function():
+def power_function():#square a number 
     current = entry.get()
     entry.delete(0, tk.END)
     entry.insert(tk.END, current + "**")
